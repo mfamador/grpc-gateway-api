@@ -3,21 +3,17 @@ package echo
 import (
 	"context"
 	"flag"
-	echo "github.com/mfamador/api/v1/internal/gen"
-	"github.com/rs/zerolog/log"
 	"net"
 	"net/http"
+
+	echo "github.com/mfamador/api/v1/internal/gen"
+	"github.com/rs/zerolog/log"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 )
 
-var (
-	ServerPort         string
-	SwaggerDir         string
-	EndPoint           = "8181"
-	grpcServerEndpoint = flag.String("grpc-server-endpoint", "localhost:9090", "gRPC server endpoint")
-)
+var grpcServerEndpoint = flag.String("grpc-server-endpoint", "localhost:9090", "gRPC server endpoint")
 
 func Run() error {
 	ctx := context.Background()
@@ -33,7 +29,7 @@ func Run() error {
 		return err
 	}
 	go func() {
-		err := grpcServer.Serve(grpcLis)
+		err = grpcServer.Serve(grpcLis)
 		if err != nil {
 			log.Err(err)
 		}
