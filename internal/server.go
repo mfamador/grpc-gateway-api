@@ -3,7 +3,7 @@ package echo
 import (
 	"context"
 	"flag"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/mfamador/api/v1/internal/gen"
 	"google.golang.org/grpc"
 	"net"
